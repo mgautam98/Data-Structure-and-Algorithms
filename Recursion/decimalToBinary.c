@@ -15,7 +15,7 @@ void main()
     printf("Enter the number whose binary equivalentis to be found ");  //Input the number whose binary equivalent is to be found      
     scanf("%d",&n);
     num=BinaryConversion(n);
-    printf("\n The binary equivalent of the input number is : %d",num); //Displaying the binary equivalent
+    printf("\n\n The binary equivalent of the input number is : %d",num); //Displaying the binary equivalent
 
 }
 
