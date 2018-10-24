@@ -236,7 +236,7 @@ struct node *InsertBefore(struct node *start, int data, int x){
 
 
 struct node *InsertAtIndex(struct node *start, int data, int k){
-    struct node *p, *temp;
+    struct node *p=start, *temp=start;
     int i;
 
     if(k==1){
