@@ -21,7 +21,7 @@ struct node *Max(struct node*);
 struct node *insertNode(struct node*, int);
 struct node *getnode(int);
 struct node *deleteNode(struct node*, int);
-
+struct node *delete_min_key_element(struct node *root);
 
 int main()
 {
@@ -40,7 +40,7 @@ int main()
     printf("6.Exit\n\n");
     printf("Enter choice\n");
     scanf("%d", &choice);
-    if(choice==6)
+    if(choice==7)
       break;
     switch(choice){
       case 1: printf("Enter the node\t");
@@ -57,7 +57,7 @@ int main()
               if(p!=NULL)
                 printf("%d found\n", p->info);
               else
-                printf("Not found\n")
+                printf("Not found\n");
               break;
       case 4: p=Max(root);
               if(p==NULL)
@@ -71,6 +71,10 @@ int main()
               else
               printf("Minimum key is %d\n", p->info);
               break;
+      case 6 :
+	      root=delete_min_key_element(root);
+	      break;
+	
       default:break;
     }
   }
@@ -188,3 +192,31 @@ struct node *deleteNode(struct node *root, int x){
   free(p);
   return root;
 };
+
+struct node *delete_min_key_element(struct node *root){
+	struct node *temp3;
+	 if(root==NULL){
+       	        printf("tree is empty");
+       	  	 return NULL;
+        }
+	if(root->lchild==NULL){
+		temp3=root;
+		if(root->rchild==NULL){
+			free(temp3);
+			return NULL;
+		}
+		root=root->rchild;
+		free(temp3);
+		return root;
+	}
+	struct node *temp=root,*temp2;
+
+	while(temp->lchild!=NULL)
+	{
+		temp2=temp;
+		temp=temp->lchild;
+	}
+  	temp2->lchild=NULL;
+        free(temp);
+        return root;
+}
